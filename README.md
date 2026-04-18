@@ -101,3 +101,7 @@ pytest
 ## 📌 Notes
 
 This project was built as part of my transition into QA Automation.
+
+## Assumptions
+
+- The inventory page always contains 6 items (as per current application behavior)
