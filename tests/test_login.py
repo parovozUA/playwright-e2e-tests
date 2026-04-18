@@ -42,3 +42,8 @@ def test_inventory_loaded(logged_in_page):
     inventory_page = InventoryPage(logged_in_page)
 
     inventory_page.assert_loaded()
+
+def test_inventory_page_open(logged_in_page):
+    inventory_page = InventoryPage(logged_in_page)
+    inventory_page.open()
+    inventory_page.assert_loaded()
