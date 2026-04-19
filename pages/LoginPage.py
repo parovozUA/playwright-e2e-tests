@@ -1,13 +1,4 @@
-import pytest
-
 from pages.BasePage import BasePage
-
-@pytest.fixture
-def logged_in_page(page):
-    login_page = LoginPage(page)
-    login_page.open()
-    login_page.login("standard_user", "secret_sauce")
-    return page
 
 class LoginPage(BasePage):
     URL = "https://www.saucedemo.com/"
