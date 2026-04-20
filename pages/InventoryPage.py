@@ -36,7 +36,6 @@ class InventoryPage(BasePage):
     def get_url(self):
         return self.page.url
 
-
     def sort_items(self, sort_by: SortValue):
         self.sort_dropdown.select_option(value=sort_by)
 
@@ -49,3 +48,11 @@ class InventoryPage(BasePage):
 
     def get_cart_count(self):
         return self.cart_badge.inner_text()
+
+
+    def get_item_prices(self) -> list[float]:
+        return [float(x.replace("$", "").strip())
+                for x in self.item_price_texts.all_inner_texts()]
+
+    def get_item_names(self) -> list[str]:
+        return [x.strip() for x in self.item_name_texts.all_inner_texts()]
