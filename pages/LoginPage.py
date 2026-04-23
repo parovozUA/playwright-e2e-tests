@@ -1,3 +1,4 @@
+from data.Users import User
 from pages.BasePage import BasePage
 
 class LoginPage(BasePage):
@@ -12,7 +13,7 @@ class LoginPage(BasePage):
 
     def open(self): self.page.goto(self.URL)
 
-    def login(self, username, password):
-        self.username_input.fill(username)
-        self.password_input.fill(password)
+    def login(self, user: User):
+        self.username_input.fill(user.username)
+        self.password_input.fill(user.password)
         self.login_button.click()
