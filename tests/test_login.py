@@ -3,20 +3,13 @@ import re
 import pytest
 from playwright.sync_api import expect
 
-from data.Users import Users
+from data.LoginCases import LOGIN_CASES
 from pages.LoginPage import LoginPage
 
 
 @pytest.mark.parametrize(
-    "user, should_pass",
-    [
-        (Users.VALID, True),
-        (Users.WRONG_USERNAME, False),
-        (Users.WRONG_PASSWORD, False),
-        (Users.EMPTY_USERNAME, False),
-        (Users.EMPTY_PASSWORD, False),
-        (Users.LOCKED, False),
-    ],
+    "case",
+    LOGIN_CASES,
     ids=[
         "valid user",
         "wrong username",
@@ -26,13 +19,13 @@ from pages.LoginPage import LoginPage
         "locked user",
     ]
 )
-def test_login(page, user, should_pass):
+def test_login(page, case):
     login_page = LoginPage(page)
 
     login_page.open()
-    login_page.login(user)
+    login_page.login(case.user)
 
-    if should_pass:
+    if case.should_pass:
         expect(page).to_have_url(re.compile(r".*inventory.*"))
     else:
-        expect(login_page.error_message).to_be_visible()
+        login_page.assert_error_message(case.error_message)
