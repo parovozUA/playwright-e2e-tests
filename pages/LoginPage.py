@@ -1,3 +1,5 @@
+from playwright.sync_api import expect
+
 from data.Users import User
 from pages.BasePage import BasePage
 
@@ -17,3 +19,7 @@ class LoginPage(BasePage):
         self.username_input.fill(user.username)
         self.password_input.fill(user.password)
         self.login_button.click()
+
+    def assert_error_message(self, error_message: str):
+        expect(self.error_message).to_be_visible()
+        expect(self.error_message).to_contain_text(error_message)
