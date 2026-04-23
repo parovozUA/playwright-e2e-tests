@@ -8,7 +8,7 @@ class LoginPage(BasePage):
         self.username_input = page.locator("#user-name")
         self.password_input = page.locator("#password")
         self.login_button = page.locator("#login-button")
-        self.error_message = page.locator("[data-test='error']")
+        self.error_message = page.get_by_test_id("error")
 
     def open(self): self.page.goto(self.URL)
 
