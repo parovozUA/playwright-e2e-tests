@@ -14,7 +14,7 @@ class CheckoutPage(BasePage):
         self.back_to_home_button = page.locator('#back-to-products')
 
         self.error_button = page.get_by_test_id('error-button')
-        self.error_message_container = page.locator('.error-message-container')
+        self.error_message_container = page.get_by_test_id('error')
 
     def fill_first_name(self, first_name):
         self.first_name_input.fill(first_name)
