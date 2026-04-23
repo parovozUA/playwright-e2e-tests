@@ -1,5 +1,6 @@
 from playwright.sync_api import expect
 
+from data.CheckoutForm import CheckoutForms
 from pages.CartPage import CartPage
 from pages.CheckoutPage import CheckoutPage
 from pages.InventoryPage import InventoryPage
@@ -21,7 +22,7 @@ def test_checkout(logged_in_page):
     cart_page.checkout_button.click()
     expect(checkout_page.title_span).to_have_text("Checkout: Your Information")
 
-    checkout_page.fill_checkout_form("John", "Doe", "12345")
+    checkout_page.fill_checkout_form(CheckoutForms.VALID)
     checkout_page.continue_button.click()
     expect(checkout_page.title_span).to_have_text("Checkout: Overview")
 
