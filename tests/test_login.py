@@ -11,14 +11,7 @@ from pages.LoginPage import LoginPage
 @pytest.mark.parametrize(
     "case",
     LOGIN_CASES,
-    ids=[
-        "valid user",
-        "wrong username",
-        "wrong password",
-        "empty username",
-        "empty password",
-        "locked user",
-    ]
+    ids=[case.name for case in LOGIN_CASES]
 )
 def test_login_form_validation(page, case):
     login_page = LoginPage(page)
@@ -30,6 +23,7 @@ def test_login_form_validation(page, case):
         expect(page).to_have_url(re.compile(r".*inventory.*"))
     else:
         login_page.assert_error_message(case.error_message)
+
 
 def test_login_form_error_button_close(page):
     login_page = LoginPage(page)
