@@ -6,6 +6,7 @@ from playwright.sync_api import expect
 from data.LoginCases import LOGIN_CASES
 from data.Users import Users
 from pages.LoginPage import LoginPage
+from utils.helpers import assert_error_message
 
 
 @pytest.mark.parametrize(
@@ -22,7 +23,7 @@ def test_login_form_validation(page, case):
     if case.should_pass:
         expect(page).to_have_url(re.compile(r".*inventory.*"))
     else:
-        login_page.assert_error_message(case.error_message)
+        assert_error_message(login_page.error_message, case.error_message)
 
 
 def test_login_form_error_button_close(page):
