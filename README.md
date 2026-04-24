@@ -46,16 +46,16 @@ The goal is not just to test UI, but to demonstrate **scalable test design**.
 
 ## 🧠 Architecture
 
-### Layers
-
-tests/          → test scenarios  
-pages/          → Page Objects (UI interactions)  
+### Project Structure
+```
 data/  
   ├── models/   → dataclasses (User, Case, Form)  
   ├── cases/    → test scenarios (login, checkout)  
   └── test_data → predefined inputs  
+tests/          → test scenarios  
+pages/          → Page Objects (UI interactions)  
 utils/          → helpers & assertions  
-
+```
 ---
 
 ### Example: Data-driven test
