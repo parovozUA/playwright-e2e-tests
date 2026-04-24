@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import expect
 
-from data.CheckoutCases import CHECKOUT_CASES
+from data.CheckoutCases import CHECKOUT_CASES, CheckoutCase
 from data.CheckoutForm import CheckoutForms
 from pages.CartPage import CartPage
 from pages.CheckoutPage import CheckoutPage
@@ -14,12 +14,9 @@ from utils.helpers import assert_error_message
     CHECKOUT_CASES,
     ids=[case.name for case in CHECKOUT_CASES]
 )
-def test_checkout_form_validation(logged_in_page, case):
-    if case.name == "all fields spaces":
-        pytest.xfail("Form does not trim spaces")
-
-    if case.name == "long values":
-        pytest.xfail("Form does not validate long values")
+def test_checkout_form_validation(logged_in_page, case: CheckoutCase):
+    if case.xfail_reason:
+        pytest.xfail(case.xfail_reason)
 
     inventory_page = InventoryPage(logged_in_page)
     cart_page = CartPage(logged_in_page)
