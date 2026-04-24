@@ -33,18 +33,18 @@ def test_all_inventory_items_have_prices(logged_in_page):
 
 
 @pytest.mark.parametrize(
-    "sort_value, extract, reverse",
+    "sort_value, get_items, reverse",
     [
-        (SortValue.NAME_ASC, lambda p: p.get_item_names, False),
-        (SortValue.NAME_DESC, lambda p: p.get_item_names, True),
-        (SortValue.PRICE_ASC, lambda p: p.get_item_prices, False),
-        (SortValue.PRICE_DESC, lambda p: p.get_item_prices, True),
+        (SortValue.NAME_ASC, InventoryPage.get_item_names, False),
+        (SortValue.NAME_DESC, InventoryPage.get_item_names, True),
+        (SortValue.PRICE_ASC, InventoryPage.get_item_prices, False),
+        (SortValue.PRICE_DESC, InventoryPage.get_item_prices, True),
     ],
     ids=["Names ascending", "Names descending", "Prices ascending", "Prices descending"],
 )
-def test_inventory_items_sorting(logged_in_page, sort_value, extract, reverse):
+def test_inventory_items_sorting(logged_in_page, sort_value, get_items, reverse):
     inventory_page = InventoryPage(logged_in_page)
 
     inventory_page.sort_dropdown.select_option(value=sort_value)
-    values = extract(inventory_page)
+    values = get_items(inventory_page)
     assert values == sorted(values, reverse=reverse)
