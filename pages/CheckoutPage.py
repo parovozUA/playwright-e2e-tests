@@ -1,4 +1,4 @@
-from data.CheckoutForm import CheckoutForm
+from data.models.CheckoutForm import CheckoutForm
 from pages.BasePage import BasePage
 
 

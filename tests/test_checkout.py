@@ -1,8 +1,8 @@
 import pytest
 from playwright.sync_api import expect
 
-from data.CheckoutCases import CHECKOUT_CASES, CheckoutCase
-from data.CheckoutForm import CheckoutForms
+from data.cases.checkout_cases import CHECKOUT_CASES, CheckoutCase
+from data.test_data.CheckoutForms import CheckoutForms
 from pages.CartPage import CartPage
 from pages.CheckoutPage import CheckoutPage
 from pages.InventoryPage import InventoryPage

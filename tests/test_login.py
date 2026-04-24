@@ -3,8 +3,9 @@ import re
 import pytest
 from playwright.sync_api import expect
 
-from data.LoginCases import LOGIN_CASES, LoginCase
-from data.Users import Users
+from data.cases.login_cases import LOGIN_CASES
+from data.models.LoginCase import LoginCase
+from data.test_data.Users import Users
 from pages.LoginPage import LoginPage
 from utils.helpers import assert_error_message
 

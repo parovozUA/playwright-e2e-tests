@@ -1,11 +1,5 @@
-from dataclasses import dataclass
+from data.models.CheckoutForm import CheckoutForm
 
-
-@dataclass
-class CheckoutForm:
-    first_name: str
-    last_name: str
-    postal_code: str
 
 class CheckoutForms:
     VALID = CheckoutForm("John", "Doe", "12345")

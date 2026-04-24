@@ -1,15 +1,4 @@
-from dataclasses import dataclass
-
-from data.BaseTestCase import BaseCase
-from data.Users import User
-
-from data.Users import Users
-
-
-@dataclass
-class LoginCase(BaseCase):
-    user: User
-
+from data.models.User import Users
 
 LOGIN_CASES = [
     LoginCase(

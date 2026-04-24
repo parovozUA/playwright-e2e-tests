@@ -1,13 +1,5 @@
-from dataclasses import dataclass
-
-from data.BaseTestCase import BaseCase
-from data.CheckoutForm import CheckoutForm, CheckoutForms
-
-
-@dataclass
-class CheckoutCase(BaseCase):
-    form: CheckoutForm
-
+from data.models.CheckoutCase import CheckoutCase
+from data.test_data.CheckoutForms import CheckoutForms
 
 CHECKOUT_CASES = [
     CheckoutCase(

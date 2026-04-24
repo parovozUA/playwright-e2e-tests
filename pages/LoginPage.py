@@ -1,4 +1,4 @@
-from data.Users import User
+from data.models.User import User
 from pages.BasePage import BasePage
 
 class LoginPage(BasePage):
