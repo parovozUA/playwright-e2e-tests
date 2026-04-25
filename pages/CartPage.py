@@ -1,3 +1,5 @@
+import allure
+
 from pages.BasePage import BasePage
 
 
@@ -10,3 +12,7 @@ class CartPage(BasePage):
 
     def is_item_present(self):
         return self.cart_items.count() > 0
+
+    def click_checkout(self):
+        with allure.step("Click checkout button"):
+            self.checkout_button.click()

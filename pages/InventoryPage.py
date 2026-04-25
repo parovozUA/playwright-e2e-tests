@@ -1,5 +1,7 @@
 from enum import Enum
 
+import allure
+
 from pages.BasePage import BasePage
 
 class SortValue(str, Enum):
@@ -31,20 +33,25 @@ class InventoryPage(BasePage):
         self.cart_icon = page.get_by_test_id("shopping-cart-link")
         self.cart_badge = page.get_by_test_id("shopping-cart-badge")
 
-    def open(self): self.page.goto(self.URL)
+    def open(self):
+        with allure.step("Open inventory page"):
+            self.page.goto(self.URL)
 
     def get_url(self):
         return self.page.url
 
     def sort_items(self, sort_by: SortValue):
-        self.sort_dropdown.select_option(value=sort_by)
+        with allure.step(f"Sort items by {sort_by}"):
+            self.sort_dropdown.select_option(value=sort_by)
 
     # ------------- Cart actions -------------
     def add_item_to_cart(self):
-        self.add_to_cart_backpack_button.click()
+        with allure.step("Add item to cart"):
+            self.add_to_cart_backpack_button.click()
 
     def open_cart(self):
-        self.cart_icon.click()
+        with allure.step("Open cart"):
+            self.cart_icon.click()
 
     def get_cart_count(self):
         return self.cart_badge.inner_text()

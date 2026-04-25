@@ -1,4 +1,5 @@
-from data.models.User import Users
+from data.models.LoginCase import LoginCase
+from data.test_data.Users import Users
 
 LOGIN_CASES = [
     LoginCase(
