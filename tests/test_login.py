@@ -14,6 +14,7 @@ from utils.helpers import assert_error_message
 @allure.suite("Login")
 @allure.feature("Login")
 class TestLogin:
+
     @allure.story("Login Form Validation")
     @allure.description("Verifies that the login form validation works as expected for different cases")
     @pytest.mark.parametrize(
