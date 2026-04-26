@@ -1,7 +1,17 @@
+import os
+
 import pytest
 import allure
 from datetime import datetime
 
+#add environment variables to allure report
+def pytest_sessionstart(session):
+    os.makedirs("allure-results", exist_ok=True)
+
+    env = os.getenv("ENV", "local")
+
+    with open("allure-results/environment.properties", "w") as f:
+        f.write(f"Environment={env}\n")
 
 @pytest.fixture(scope="session", autouse=True)
 def configure_selectors(playwright):
