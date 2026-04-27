@@ -91,7 +91,4 @@ pytest
 
 ## 👤 Author
 
-**Constantine**
-QA Automation Engineer
-
-🔗 [LinkedIn](https://www.linkedin.com/in/constantine-qa/)
+**Constantine P.** - [LinkedIn](https://www.linkedin.com/in/constantine-qa/)
