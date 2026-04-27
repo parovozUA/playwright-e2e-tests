@@ -4,6 +4,7 @@ from pages.BasePage import BasePage
 
 
 class CartPage(BasePage):
+    PATH = "/cart.html"
 
     def __init__(self, page):
         super().__init__(page)
@@ -16,3 +17,7 @@ class CartPage(BasePage):
     def click_checkout(self):
         with allure.step("Click checkout button"):
             self.checkout_button.click()
+
+    def open(self):
+        with allure.step("Open cart page"):
+            self.page.goto(self.BASE_URL + self.PATH)

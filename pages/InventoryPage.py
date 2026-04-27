@@ -11,7 +11,7 @@ class SortValue(str, Enum):
     NAME_DESC = "za"
 
 class InventoryPage(BasePage):
-    URL = "https://www.saucedemo.com/inventory.html"
+    PATH = "/inventory.html"
     ITEMS_COUNT = 6 # According to current application behavior, inventory contains 6 items
 
     def __init__(self, page):
@@ -35,7 +35,7 @@ class InventoryPage(BasePage):
 
     def open(self):
         with allure.step("Open inventory page"):
-            self.page.goto(self.URL)
+            self.page.goto(self.BASE_URL + self.PATH)
 
     def get_url(self):
         return self.page.url

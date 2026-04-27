@@ -4,7 +4,7 @@ from data.models.User import User
 from pages.BasePage import BasePage
 
 class LoginPage(BasePage):
-    URL = "https://www.saucedemo.com/"
+    PATH = "/"
 
     def __init__(self, page):
         super().__init__(page)
@@ -16,7 +16,7 @@ class LoginPage(BasePage):
 
     def open(self):
         with allure.step("Open login page"):
-            self.page.goto(self.URL)
+            self.page.goto(self.BASE_URL + self.PATH)
 
     def login(self, user: User):
         with allure.step(f"Login with user '{user.username}'"):
